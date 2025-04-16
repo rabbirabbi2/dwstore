@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Products Store</title>
+  <style>
+    :root {
+      --primary-color: #0f172a;
+      --secondary-color: #6366f1;
+      --accent-color: #10b981;
+      --bg-color: #0e0f1b;
+      --text-color: #e5e7eb;
+      --muted-text: #9ca3af;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: var(--bg-color);
+      color: var(--text-color);
+      overflow-x: hidden;
+    }
+    header {
+      background: linear-gradient(135deg, #0f172a, #1e3a8a);
+      color: white;
+      text-align: center;
+      padding: 1.5rem 1rem;
+      box-shadow: 0 4px 20px rgba(99, 102, 241, 0.5);
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+      color: var(--accent-color);
+    }
+    header p {
+      font-size: 1rem;
+      color: #d1d5db;
+    }
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      padding: 1rem;
+      perspective: 1500px;
+    }
+    .product-card {
+      perspective: 1500px;
+      transform-style: preserve-3d;
+      transition: transform 0.8s ease-in-out;
+      cursor: pointer;
+      transform: rotateX(0deg) rotateY(0deg);
+      animation: floatCard 5s ease-in-out infinite;
+    }
+    .card-inner {
+      position: relative;
+      width: 100%;
+      height: 300px;
+      transform-style: preserve-3d;
+      transition: transform 0.8s ease-in-out;
+    }
+    .product-card.flipped .card-inner {
+      transform: rotateY(180deg);
+    }
+    .card-front, .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      box-shadow: 0 0 30px rgba(255, 255, 255, 0.1), 0 0 60px rgba(99, 102, 241, 0.2);
+      animation: glowEffect 4s ease-in-out infinite alternate;
+    }
+    .card-front {
+      background: linear-gradient(135deg, #3b0764, #312e81, #1e3a8a);
+      border: 2px solid #7c3aed;
+      transform: rotateY(0deg);
+    }
+    .card-front img {
+      width: 70px;
+      height: 70px;
+      object-fit: cover;
+      border-radius: 16px;
+      margin-bottom: 0.8rem;
+      box-shadow: 0 0 15px #f472b6;
+    }
+    .card-front h3 {
+      margin: 0.5rem 0;
+      font-size: 1rem;
+      color: #fbbf24;
+      text-align: center;
+    }
+    .card-front p {
+      font-size: 0.9rem;
+      color: var(--muted-text);
+      text-align: center;
+    }
+    .card-back {
+      transform: rotateY(180deg);
+      background: linear-gradient(135deg, #0ea5e9, #9333ea, #f43f5e);
+      color: #fff;
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-shadow: 0 0 15px #10b981;
+      border: 2px solid #ec4899;
+      box-shadow: 0 0 25px #f0abfc, 0 0 60px #7c3aed;
+      text-align: center;
+    }
+    @keyframes glowEffect {
+      0% {
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.1), 0 0 40px rgba(236, 72, 153, 0.2);
+      }
+      100% {
+        box-shadow: 0 0 30px rgba(255, 255, 255, 0.2), 0 0 80px rgba(236, 72, 153, 0.4);
+      }
+    }
+    @keyframes floatCard {
+      0%, 100% {
+        transform: rotateX(0deg) rotateY(0deg) translateY(0);
+      }
+      50% {
+        transform: rotateX(4deg) rotateY(-4deg) translateY(-10px);
+      }
+    }
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.6rem;
+      }
+      header p {
+        font-size: 0.9rem;
+      }
+      .product-card {
+        height: 260px;
+      }
+      .card-front img {
+        width: 60px;
+        height: 60px;
+      }
+      .card-front h3 {
+        font-size: 0.95rem;
+      }
+      .card-front p {
+        font-size: 0.85rem;
+      }
+      .card-back {
+        font-size: 1.3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Digital Products Store</h1>
+    <p>Affordable & High-Quality Digital Products</p>
+  </header>
+  <main class="product-grid">
+    <div class="product-card" onclick="this.classList.toggle('flipped')">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="https://img.icons8.com/color/96/000000/canva.png" alt="Canva Pro">
+          <h3>Canva Pro</h3>
+          <p>Click to see price</p>
+        </div>
+        <div class="card-back">
+          ৳ 50
+        </div>
+      </div>
+    </div>
+    <div class="product-card" onclick="this.classList.toggle('flipped')">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="https://img.icons8.com/color/96/000000/artificial-intelligence.png" alt="Prompt Engineering">
+          <h3>Prompt Engineering eBook</h3>
+          <p>Click to see price</p>
+        </div>
+        <div class="card-back">
+          ৳ 80
+        </div>
+      </div>
+    </div>
+    <div class="product-card" onclick="this.classList.toggle('flipped')">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="https://img.icons8.com/color/96/000000/microsoft-excel-2019--v1.png" alt="Excel Formulas">
+          <h3>Excel Formulas eBook</h3>
+          <p>Click to see price</p>
+        </div>
+        <div class="card-back">
+          ৳ 100
+        </div>
+      </div>
+    </div>
+    <div class="product-card" onclick="this.classList.toggle('flipped')">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="https://img.icons8.com/color/96/000000/chatgpt.png" alt="ChatGPT A to Z">
+          <h3>ChatGPT A to Z eBook</h3>
+          <p>Click to see price</p>
+        </div>
+        <div class="card-back">
+          ৳ 50
+        </div>
+      </div>
+    </div>
+    <div class="product-card" onclick="this.classList.toggle('flipped')">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="https://img.icons8.com/color/96/000000/communication.png" alt="Communication Skills">
+          <h3>Communication Skill eBook</h3>
+          <p>Click to see price</p>
+        </div>
+        <div class="card-back">
+          ৳ 100
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
