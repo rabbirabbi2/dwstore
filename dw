@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Products Store</title>
+  <style>
+    :root {
+      --primary-color: #0f172a;
+      --secondary-color: #6366f1;
+      --accent-color: #10b981;
+      --bg-color: #0e0f1b;
+      --text-color: #e5e7eb;
+      --muted-text: #9ca3af;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: var(--bg-color);
+      color: var(--text-color);
+    }
+    header {
+      background: linear-gradient(135deg, #0f172a, #1e3a8a);
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem;
+      box-shadow: 0 4px 20px rgba(99, 102, 241, 0.5);
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.8rem;
+      color: var(--accent-color);
+    }
+    header p {
+      font-size: 1.1rem;
+      color: #d1d5db;
+    }
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      padding: 2rem;
+      perspective: 1000px;
+    }
+    .product-card {
+      position: relative;
+      width: 100%;
+      height: 320px;
+      transform-style: preserve-3d;
+      transition: transform 0.8s;
+      cursor: pointer;
+    }
+    .card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      transition: transform 0.8s;
+    }
+    .product-card.flipped .card-inner {
+      transform: rotateY(180deg);
+    }
+    .card-front, .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(99, 102, 241, 0.2);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+    .card-front {
+      background: linear-gradient(135deg, #1e293b, #334155);
+      border: 2px solid #4f46e5;
+    }
+    .card-front img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 1rem;
+      box-shadow: 0 0 15px #6366f1;
+    }
+    .card-front h3 {
+      margin: 0.5rem 0;
+      font-size: 1.3rem;
+      color: #facc15;
+    }
+    .card-front p {
+      font-size: 1rem;
+      color: var(--muted-text);
+    }
+    .card-back {
+      transform: rotateY(180deg);
+      background: radial-gradient(circle at top left, #6366f1, #1e1b4b);
+      color: #fff;
+      font-size: 1.8rem;
+      font-weight: bold;
+      text-shadow: 0 0 15px #10b981;
+      border: 2px solid #0ea5e9;
+      box-shadow: 0 0 25px #0ea5e9;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Digital Products Store</h1>
+    <p>Affordable & High-Quality Digital Products</p>
+  </header>
+  <main class="product-grid">
+    <div class="product-card" onclick="this.classList.toggle('flipped')">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="https://img.icons8.com/color/96/000000/canva.png" alt="Canva Pro">
+          <h3>Canva Pro</h3>
+          <p>Click to see price</p>
+        </div>
+        <div class="card-back">
+          ৳ 50
+        </div>
+      </div>
+    </div>
+    <div class="product-card" onclick="this.classList.toggle('flipped')">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="https://img.icons8.com/color/96/000000/artificial-intelligence.png" alt="Prompt Engineering">
+          <h3>Prompt Engineering eBook</h3>
+          <p>Click to see price</p>
+        </div>
+        <div class="card-back">
+          ৳ 80
+        </div>
+      </div>
+    </div>
+    <div class="product-card" onclick="this.classList.toggle('flipped')">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="https://img.icons8.com/color/96/000000/microsoft-excel-2019--v1.png" alt="Excel Formulas">
+          <h3>Excel Formulas eBook</h3>
+          <p>Click to see price</p>
+        </div>
+        <div class="card-back">
+          ৳ 100
+        </div>
+      </div>
+    </div>
+    <div class="product-card" onclick="this.classList.toggle('flipped')">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="https://img.icons8.com/color/96/000000/chatgpt.png" alt="ChatGPT A to Z">
+          <h3>ChatGPT A to Z eBook</h3>
+          <p>Click to see price</p>
+        </div>
+        <div class="card-back">
+          ৳ 50
+        </div>
+      </div>
+    </div>
+    <div class="product-card" onclick="this.classList.toggle('flipped')">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="https://img.icons8.com/color/96/000000/communication.png" alt="Communication Skills">
+          <h3>Communication Skill eBook</h3>
+          <p>Click to see price</p>
+        </div>
+        <div class="card-back">
+          ৳ 100
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
